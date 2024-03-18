@@ -1,3 +1,1 @@
-# E-Commerce
-<br>
-Author - Shruti & Abhinendra
+E-commerce website made by Shruti & Abhinendra
