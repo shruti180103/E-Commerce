@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { FaGoogle, FaFacebook } from "react-icons/fa";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 
@@ -7,6 +8,17 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+
+  
+  const handleGoogleSignIn = () => {
+    console.log("Google Sign-In clicked");
+  };
+
+  
+  const handleFacebookSignIn = () => {
+    console.log("Facebook Sign-In clicked");
+  };
+
   return (
     <div className="h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="flex justify-center items-center h-screen">
@@ -17,6 +29,7 @@ const Login = () => {
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6">
+            {/* Your existing form elements */}
             <div>
               <label
                 htmlFor="email"
@@ -32,7 +45,7 @@ const Login = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block  w-3/4 px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
             </div>
@@ -51,7 +64,7 @@ const Login = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full sm:w-72 px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
                 {visible ? (
                   <AiOutlineEye
@@ -68,6 +81,7 @@ const Login = () => {
                 )}
               </div>
             </div>
+            {/* Your existing form elements */}
             <div className={`${styles.noramlFlex} justify-between`}>
               <div className={`${styles.noramlFlex}`}>
                 <input
@@ -88,25 +102,40 @@ const Login = () => {
                   href=".forgot-password"
                   className="font-medium text-blue-600 hover:text-blue-500"
                 >
-                  forgot your password
+                  Forgot your password
                 </a>
               </div>
             </div>
             <div>
               <button
-                type="submti"
+                type="submit"
                 className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700  "
               >
-                submit
+                Submit
               </button>
             </div>
-            <div className="className={'${styles.normalflex'} w-full'}">
-              <h4> Not have any account?</h4>
-              <Link to="/sign-up" className="text-blue-600 pl-2">
+            <div className="flex justify-center items-center mt-4">
+              <span className="mr-2">Don't have an account?</span>
+              <Link to="/sign-up" className="text-blue-600">
                 Sign Up
               </Link>
             </div>
           </form>
+          {/* Google and Facebook Sign-In options */}
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={handleGoogleSignIn}
+              className="group relative h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-200  "
+            >
+              <FaGoogle className="mr-2" /> Sign in with Google
+            </button>
+            <button
+              onClick={handleFacebookSignIn}
+              className="group relative h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700  ml-4"
+            >
+              <FaFacebook className="mr-2" /> Sign in with Facebook
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -114,3 +143,6 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
