@@ -9,12 +9,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
 
-  
   const handleGoogleSignIn = () => {
     console.log("Google Sign-In clicked");
   };
 
-  
   const handleFacebookSignIn = () => {
     console.log("Facebook Sign-In clicked");
   };
@@ -143,6 +141,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
