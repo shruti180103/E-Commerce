@@ -100,7 +100,7 @@ const Login = () => {
                   href=".forgot-password"
                   className="font-medium text-blue-600 hover:text-blue-500"
                 >
-                  Forgot your password
+                  Forgot Password?
                 </a>
               </div>
             </div>
@@ -121,18 +121,18 @@ const Login = () => {
           </form>
           {/* Google and Facebook Sign-In options */}
           <div className="mt-6 flex justify-center">
-            <button
-              onClick={handleGoogleSignIn}
-              className="group relative h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-200  "
-            >
-              <FaGoogle className="mr-2" /> Sign in with Google
+             <button
+               onClick={handleGoogleSignIn}
+               className="group relative flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out"
+             >
+                <FaGoogle className="mr-2" /> Sign in with Google
             </button>
             <button
-              onClick={handleFacebookSignIn}
-              className="group relative h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700  ml-4"
-            >
-              <FaFacebook className="mr-2" /> Sign in with Facebook
-            </button>
+               onClick={handleFacebookSignIn}
+               className="group relative flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 ml-4 transition duration-300 ease-in-out"
+             >
+               <FaFacebook className="mr-2" /> Sign in with Facebook
+             </button>
           </div>
         </div>
       </div>
