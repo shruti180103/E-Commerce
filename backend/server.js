@@ -1,6 +1,5 @@
 const app = require("./app");
 const connectDatabase = require("./db/Database");
-const cloudinary = require("cloudinary");
 
 // Handling uncaught Exception
 process.on("uncaughtException", (err) => {
@@ -14,12 +13,12 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     path: "config/.env",
   });
 }
+// connect db
+connectDatabase();
 
 // create server
 const server = app.listen(process.env.PORT, () => {
-  console.log(
-    `Server is running on http://localhost:${process.env.PORT}`
-  );
+  console.log(`Server is running on http://localhost:${process.env.PORT}`);
 });
 
 // unhandled promise rejection
