@@ -1,15 +1,11 @@
 const express = required("express");
 const app = express();
 
-
-
 // config
-if (process.env.NODE_ENV !== "PRODUCTION"){
+if (process.env.NODE_ENV !== "PRODUCTION") {
     require("dotenv").config({
-        path:"backend/config/.env"
-    })
-     
-}
-
+      path: "config/.env",
+    });
+  }
 
 module.exports = app
