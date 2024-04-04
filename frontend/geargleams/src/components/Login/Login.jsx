@@ -21,7 +21,7 @@ const Login = () => {
     <div className="h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="flex justify-center items-center h-screen">
         <h2 className="mt-6 text-colour text-3xl font-extrabold text-gray-900">
-          Login to your account
+          Login to your Account
         </h2>
       </div>
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
