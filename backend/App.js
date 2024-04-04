@@ -1,11 +1,11 @@
-const express = required("express");
+const express = require("express");
 const app = express();
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
     require("dotenv").config({
-      path: "config/.env",
+      path: "backend/config/.env"
     });
   }
 
-module.exports = app
+module.exports = app;
