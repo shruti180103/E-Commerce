@@ -1,30 +1,40 @@
 const express = require("express");
-const path = require("path");
 const User = require("../model/user");
 const router = express.Router();
-const { upload } = require("../multer");
 const ErrorHandler = require("../utils/ErrorHandler");
 
-router.post("/create-user", upload.single("file"), async (req, res, next) => {
-  const { name, email, password } = req.body;
-  const userEmail = await User.findOne({ email });
-  if (userEmail) {
-    return next(new ErrorHandler("user already exists", 400));
+router.post("/create-user", async (req, res, next) => {
+  try {
+    const { name, email, password } = req.body;
+
+    // Check if required fields are provided
+    if (!name || !email || !password) {
+      throw new ErrorHandler("Name, email, and password are required", 400);
+    }
+
+    // Check if user with the same email already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      throw new ErrorHandler("User already exists", 400);
+    }
+
+    // Create new user
+    const newUser = await User.create({
+      name: name,
+      email: email,
+      password: password
+    });
+
+    res.status(201).json({
+      success: true,
+      newUser,
+    });
+  } catch (error) {
+    next(error);
   }
-  const filename = req.file.filename;
-  const fileUrl = path.join(filename);
-  const user = {
-    name: name,
-    email: email,
-    password: password,
-    avatar: fileUrl
-  };
-  
-const newUser = await User.create(user);
-res.status(201).json({
-  success: true,
-  newUser,
-});
 });
 
 module.exports = router;
+
+
+

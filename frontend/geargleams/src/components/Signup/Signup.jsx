@@ -1,41 +1,31 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
-import { RxAvatar } from "react-icons/rx";
-import  axios  from "axios";
+import axios from "axios";
 import { server } from "../../server";
 
-const Singup = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const [avatar, setAvatar] = useState(null);
-
-  const handleFileInputChange = (e) => {
-    const file = e.target.files[0];
-    setAvatar(file);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = { Headers: { "Content-Type": "multipart/form-data" } };
+    const config = { headers: { "Content-Type": "application/json" } };
 
-    const newForm = new FormData();
+    const formData = {
+      name: name,
+      email: email,
+      password: password,
+    };
 
-    newForm.append("file", avatar);
-    newForm.append("username", name);
-    newForm.append("email", email);
-    newForm.append("password", password);
-    axios
-      .post(`${server}/user/create-user`, newForm, config)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      const response = await axios.post(`${server}/user/create-user`, formData, config);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -49,16 +39,13 @@ const Singup = () => {
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Full Name
               </label>
               <div className="mt-1">
                 <input
                   type="text"
-                  name="text"
+                  name="name"
                   autoComplete="name"
                   required
                   value={name}
@@ -69,10 +56,7 @@ const Singup = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address
               </label>
               <div className="mt-1">
@@ -89,10 +73,7 @@ const Singup = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <div className="mt-1 relative">
@@ -122,40 +103,6 @@ const Singup = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="avatar"
-                className="block text-sm font-medium text-gray-700"
-              ></label>
-              <div className="mt-2 flex items-center">
-                <span className="inline-block h-8 w-8 rounded-full overflow-hidden">
-                  {avatar ? (
-                    <img
-                      src={avatar}
-                      alt="avatar"
-                      className="h-full w-full object-cover rounded-full"
-                    />
-                  ) : (
-                    <RxAvatar className="h-8 w-8" />
-                  )}
-                </span>
-                <label
-                  htmlFor="file-input"
-                  className="ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-                >
-                  <span>Upload a file</span>
-                  <input
-                    type="file"
-                    name="avatar"
-                    id="file-input"
-                    accept=".jpg,.jpeg,.png"
-                    onChange={handleFileInputChange}
-                    className="sr-only"
-                  />
-                </label>
-              </div>
-            </div>
-
-            <div>
               <button
                 type="submit"
                 className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
@@ -163,9 +110,9 @@ const Singup = () => {
                 Submit
               </button>
             </div>
-            <div className={`${styles.noramlFlex} w-full`}>
-              <h4>Already have an account?</h4>
-              <Link to="/login" className="text-blue-600 pl-2">
+            <div className="flex justify-center items-center">
+              <span className="mr-1">Already have an account?</span>
+              <Link to="/login" className="text-blue-600">
                 Sign In
               </Link>
             </div>
@@ -176,4 +123,4 @@ const Singup = () => {
   );
 };
 
-export default Singup;
+export default Signup;
