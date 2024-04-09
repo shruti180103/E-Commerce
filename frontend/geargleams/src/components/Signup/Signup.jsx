@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
-import backgroundImage from "../../styles/login.jpg"; // Import your background image
+import backgroundImage from "../../styles/download.png"; // Import your background image
 
 const Signup = () => {
   const [email, setEmail] = useState("");
