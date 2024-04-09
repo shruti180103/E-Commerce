@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
-//import styles from '../../styles/styles';
+import backgroundImage from "../../styles/login.jpg"; // Import your background image
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +35,10 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div
+      className="min-h-screen bg-cover bg-center flex flex-col justify-center py-12 sm:px-6 lg:px-8"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white p-8 rounded-lg shadow">
         <h2 className="text-center text-3xl font-extrabold text-gray-900 mb-6">
           Register as a New User

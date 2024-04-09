@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import backgroundImage from "../../styles/login.jpg"; // Import your background image
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div
+      className="min-h-screen flex justify-center items-center"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white p-8 rounded-lg shadow">
         <h2 className="mt-0 mb-6 text-center text-3xl font-extrabold text-gray-900">
           Login to your Account
