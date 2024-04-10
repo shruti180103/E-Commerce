@@ -5,6 +5,7 @@ import axios from "axios";
 import { server } from "../../server";
 import backgroundImage from "../../styles/download.png"; // Import your background image
 
+
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
