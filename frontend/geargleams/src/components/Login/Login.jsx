@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import backgroundImage from "../../styles/login.jpg"; // Import your background image
+import backgroundImage from "../../styles/download.png"; // Import your background image
 
 const Login = () => {
   const [email, setEmail] = useState("");

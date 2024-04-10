@@ -20,11 +20,11 @@ router.post("/create-user", async (req, res, next) => {
     }
 
     // Create new user
-    const newUser = await User.create({
+    const user = {
       name: name,
       email: email,
       password: password,
-    });
+    };
     
     const activationToken = createActivationToken(user);
 
