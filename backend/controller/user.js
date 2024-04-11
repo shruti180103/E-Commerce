@@ -14,6 +14,7 @@ router.post("/create-user", async (req, res, next) => {
     if (userEmail) {
       return next(new ErrorHandler("User already exists", 400));
     }
+
     // Create new user
     const user = {
       name: name,
@@ -27,13 +28,14 @@ router.post("/create-user", async (req, res, next) => {
 
     try {
       await sendMail({
-        email: user.email,
+        email: user.email, // Ensure user.email is properly defined
         subject: "Activate your Account",
         message: `Hello ${user.name}, please click on the link to activate your account: ${activationUrl}`,
       });
+
       res.status(201).json({
         success: true,
-        message: `Please check your email:- ${user.email} to activate your account`,
+        message: `Please check your email: ${user.email} to activate your account`,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -43,12 +45,11 @@ router.post("/create-user", async (req, res, next) => {
   }
 });
 
-// create activation token
+// Create activation token
 const createActivationToken = (user) => {
   return jwt.sign(user, process.env.ACTIVATION_SECRET, {
     expiresIn: "5m",
   });
 };
 
-// activate user
 module.exports = router;
