@@ -5,43 +5,52 @@ const ErrorHandler = require("../utils/ErrorHandler");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail");
 
-//create user
+// Create user
 router.post("/create-user", async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
-    const userEmail = await User.findOne({ email });
 
+    // Check if user with provided email already exists
+    const userEmail = await User.findOne({ email });
     if (userEmail) {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    // Create new user
+    // Create new user object
     const user = {
-      name: name,
-      email: email,
-      password: password,
+      name,
+      email,
+      password,
     };
 
+    // Create activation token
     const activationToken = createActivationToken(user);
 
+    // Construct activation URL
     const activationUrl = `http://localhost:3000/activation/${activationToken}`;
 
     try {
+      // Send activation email
       await sendMail({
-        email: user.email, // Ensure user.email is properly defined
+        email: user.email,
         subject: "Activate your Account",
         message: `Hello ${user.name}, please click on the link to activate your account: ${activationUrl}`,
       });
 
+      // Respond with success message
       res.status(201).json({
         success: true,
         message: `Please check your email: ${user.email} to activate your account`,
       });
     } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
+      // Handle email sending error
+      console.error("Error sending email:", error);
+      return next(new ErrorHandler("Failed to send activation email", 500));
     }
   } catch (error) {
-    return next(new ErrorHandler(error.message, 400));
+    // Handle database query error
+    console.error("Error creating user:", error);
+    return next(new ErrorHandler("Failed to create user", 400));
   }
 });
 
