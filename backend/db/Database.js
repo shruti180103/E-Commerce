@@ -14,6 +14,8 @@ const connectDatabase = () => {
     .catch((error) => {
       console.error("MongoDB connection error:", error);
     });
+
+    
 };
 
 module.exports = connectDatabase;

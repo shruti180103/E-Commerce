@@ -8,8 +8,10 @@ const sendMail = require("../utils/sendMail");
 // Create user
 router.post("/create-user", async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
 
+    const { name, email, password } = req.body;
+    
+    console.log(req.body)
     // Check if user with provided email already exists
     const userEmail = await User.findOne({ email });
     if (userEmail) {
@@ -23,11 +25,27 @@ router.post("/create-user", async (req, res, next) => {
       password,
     };
 
+
     // Create activation token
     const activationToken = createActivationToken(user);
 
     // Construct activation URL
     const activationUrl = `http://localhost:3000/activation/${activationToken}`;
+
+    try {
+      console.log(user)
+      // Create a new user document
+      const newUser = new User({ name, email, password });
+  
+      // Save the user document to the database
+      await newUser.save();
+  
+      console.log('User added successfully:', newUser);
+    } catch (error) {
+      console.error('Error adding user:', error);
+    }
+
+
 
     try {
       // Send activation email
