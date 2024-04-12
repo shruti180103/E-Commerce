@@ -2,8 +2,10 @@ const express = require("express");
 const User = require("../model/user");
 const router = express.Router();
 const ErrorHandler = require("../utils/ErrorHandler");
+const catchAsyncError = require("../middleware/catchAsyncError");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail");
+const sendToken = require("../utils/jwtToken");
 
 // Create user
 router.post("/create-user", async (req, res, next) => {
@@ -58,7 +60,7 @@ router.post("/create-user", async (req, res, next) => {
       // Respond with success message
       res.status(201).json({
         success: true,
-        message: `Please check your email: ${user.email} to activate your account`,
+        message: `Please check your email: ${user.email} to activate your Account`,
       });
     } catch (error) {
       // Handle email sending error
@@ -78,5 +80,30 @@ const createActivationToken = (user) => {
     expiresIn: "5m",
   });
 };
+//activate user
+router.post("/activation", catchAsyncError(async(req, res, next) => {
+  try {
+    const { activation_token } = req.body;
 
+    const newUser = jwt.verify(
+      activation_token,
+      process.env.ACTIVATION_SECRET
+    );
+
+    if (!newUser) {
+      return next(new ErrorHandler("Invalid token", 400));
+    }
+    const { name, email, password} = newUser;
+    
+    User.create({
+        name,
+        email,
+        password,
+      });
+
+    sendToken(newUser, 201, res);
+  } catch (error) {
+    
+  }
+}))
 module.exports = router;
