@@ -10,16 +10,17 @@ const sendToken = require("../utils/jwtToken");
 // Create user
 router.post("/create-user", async (req, res, next) => {
   try {
-
     const { name, email, password } = req.body;
-    
-    console.log(req.body)
+
     // Check if user with provided email already exists
     const userEmail = await User.findOne({ email });
     if (userEmail) {
-      return next(new ErrorHandler("User already exists", 400));
+      console.error("User already exists, try using other email");
+      console.error(new ErrorHandler("User already exists", 400));
+      return;
+      // return next(new ErrorHandler("User already exists", 400));
     }
-
+    
     // Create new user object
     const user = {
       name,
@@ -27,28 +28,12 @@ router.post("/create-user", async (req, res, next) => {
       password,
     };
 
-
     // Create activation token
     const activationToken = createActivationToken(user);
 
     // Construct activation URL
     const activationUrl = `http://localhost:3000/activation/${activationToken}`;
-
-    try {
-      console.log(user)
-      // Create a new user document
-      const newUser = new User({ name, email, password });
-  
-      // Save the user document to the database
-      await newUser.save();
-  
-      console.log('User added successfully:', newUser);
-    } catch (error) {
-      console.error('Error adding user:', error);
-    }
-
-
-
+    
     try {
       // Send activation email
       await sendMail({
@@ -77,33 +62,44 @@ router.post("/create-user", async (req, res, next) => {
 // Create activation token
 const createActivationToken = (user) => {
   return jwt.sign(user, process.env.ACTIVATION_SECRET, {
-    expiresIn: "5m",
+    expiresIn: "1d",
   });
 };
 //activate user
-router.post("/activation", catchAsyncError(async(req, res, next) => {
-  try {
-    const { activation_token } = req.body;
+router.post(
+  "/activation",
+  catchAsyncError(async (req, res, next) => {
+    try {
+      const { activation_token } = req.body;
+      
+      const newUser = jwt.verify(
+        activation_token,
+        process.env.ACTIVATION_SECRET
+      );
+      
 
-    const newUser = jwt.verify(
-      activation_token,
-      process.env.ACTIVATION_SECRET
-    );
+      if (!User) {
+        return next(new ErrorHandler("Invalid token", 400));
+      }
+      const { name, email, password } = newUser;
 
-    if (!newUser) {
-      return next(new ErrorHandler("Invalid token", 400));
-    }
-    const { name, email, password} = newUser;
-    
-    User.create({
+      let user = await User.findOne({ email });
+
+      if (user) {
+        //console.error("User already exists");
+        return next(new ErrorHandler("User already exists", 400));
+      }
+      user = await User.create({
         name,
         email,
         password,
       });
 
-    sendToken(newUser, 201, res);
-  } catch (error) {
-    
-  }
-}))
+      sendToken(user, 201, res);
+    } catch (error) {
+      
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
 module.exports = router;
