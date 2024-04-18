@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
 import backgroundImage from "../../styles/download.png"; // Import your background image
-
+import { toast } from 'react-toastify';
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -32,7 +32,7 @@ const Signup = () => {
       .post(`${server}/user/create-user`, userData, config)
       .then((res) => {
         console.log(res.data);
-        alert(res.data.message);
+        toast.success(res.data.message);
       })
       .catch((error) => {
         console.error(error);
