@@ -5,7 +5,6 @@ import axios from "axios";
 import { server } from "../../server";
 import backgroundImage from "../../styles/download.png"; // Import your background image
 
-
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -20,9 +19,9 @@ const Signup = () => {
     const userData = {
       name: name,
       email: email,
-      password: password
+      password: password,
     };
-    
+
     // const newForm = new FormData();
 
     // newForm.append("name", name);
@@ -32,12 +31,12 @@ const Signup = () => {
     axios
       .post(`${server}/user/create-user`, userData, config)
       .then((res) => {
-        if (res.data.success === true) {
-          navigate("/");
-        }
+        console.log(res.data);
+        alert(res.data.message);
       })
       .catch((error) => {
         console.error(error);
+        alert(error.response.data.message);
       });
   };
 
