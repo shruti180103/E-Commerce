@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
 import backgroundImage from "../../styles/download.png"; // Import your background image
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -33,10 +33,13 @@ const Signup = () => {
       .then((res) => {
         console.log(res.data);
         toast.success(res.data.message);
+        setName("");
+        setEmail("");
+        setPassword("");
       })
       .catch((error) => {
         console.error(error);
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       });
   };
 

@@ -1,14 +1,38 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { server } from "../../server";
 import backgroundImage from "../../styles/download.png"; // Import your background image
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await axios
+      .post(
+        `${server}/user/login-user`,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        toast.success("Login Success!");
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  };
   const handleGoogleSignIn = () => {
     console.log("Google Sign-In clicked");
   };
@@ -30,7 +54,7 @@ const Login = () => {
         <h2 className="mt-0 mb-6 text-center text-3xl font-extrabold text-gray-900">
           Login to your Account
         </h2>
-        <form className="space-y-6">
+        <form className="space-y-6" on onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"

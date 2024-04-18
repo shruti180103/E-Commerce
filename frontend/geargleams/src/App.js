@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
@@ -14,8 +14,14 @@ import {
 import ProductCard from "./components/Route/ProductCard/ProductCard.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Store from "./redux/store.js";
+import { loadUser } from "./redux/actions/user.js";
 
 const App = () => {
+  useEffect(() => {
+    Store.dispatch(loadUser());
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -41,7 +47,7 @@ const App = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="dark"
       />
     </BrowserRouter>
   );

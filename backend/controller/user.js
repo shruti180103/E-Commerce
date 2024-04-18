@@ -6,6 +6,7 @@ const catchAsyncError = require("../middleware/catchAsyncError");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail");
 const sendToken = require("../utils/jwtToken");
+const { isAuthenticated } = require("../middleware/auth");
 
 // Create user
 router.post("/create-user", async (req, res, next) => {
@@ -20,7 +21,7 @@ router.post("/create-user", async (req, res, next) => {
       return;
       // return next(new ErrorHandler("User already exists", 400));
     }
-    
+
     // Create new user object
     const user = {
       name,
@@ -33,7 +34,7 @@ router.post("/create-user", async (req, res, next) => {
 
     // Construct activation URL
     const activationUrl = `http://localhost:3000/activation/${activationToken}`;
-    
+
     try {
       // Send activation email
       await sendMail({
@@ -71,12 +72,11 @@ router.post(
   catchAsyncError(async (req, res, next) => {
     try {
       const { activation_token } = req.body;
-      
+
       const newUser = jwt.verify(
         activation_token,
         process.env.ACTIVATION_SECRET
       );
-      
 
       if (!User) {
         return next(new ErrorHandler("Invalid token", 400));
@@ -97,7 +97,57 @@ router.post(
 
       sendToken(user, 201, res);
     } catch (error) {
-      
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+//login user
+router.post(
+  "/login-user",
+  catchAsyncError(async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+
+      if (!email || !password) {
+        return next(new ErrorHandler("Please provide all fields!", 400));
+      }
+      const user = await User.findOne({ email }).select("+password");
+
+      if (!user) {
+        return next(new ErrorHandler("User doesn't exists!", 400));
+      }
+
+      const isPasswordValid = await user.comparePassword(password);
+
+      if (!isPasswordValid) {
+        return next(
+          new ErrorHandler("Please provide the correct password", 400)
+        );
+      }
+      sendToken(user, 201, res);
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+//load-user
+router.get(
+  "/getuser",
+  isAuthenticated,
+  catchAsyncError(async (req, res, next) => {
+    try {
+      const user = await User.findById(req.user.id);
+
+      if (!user) {
+        return next(new ErrorHandler("User doesn't exists", 400));
+      }
+
+      res.status(200).json({
+        success: true,
+        user,
+      });
+    } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
   })
