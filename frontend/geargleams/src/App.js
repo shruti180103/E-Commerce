@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-<<<<<<< HEAD
 import {
   LoginPage,
   SignupPage,
@@ -13,11 +12,8 @@ import {
   FAQPage,
 } from "./Routes.js";
 import ProductCard from "./components/Route/ProductCard/ProductCard.jsx";
-=======
-import { LoginPage, SignupPage, ActivationPage } from "./Routes.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
->>>>>>> origin/main
 
 const App = () => {
   return (
