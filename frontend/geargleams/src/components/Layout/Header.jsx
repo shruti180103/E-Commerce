@@ -8,17 +8,23 @@ import { IoIosArrowDown } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
-
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
-
 import styles from "./Header"; // Import your CSS module
+import { useSelector } from "react-redux";
+import Cart from "../Cart/Cart.jsx";
+import Wishlist from "../Wishlist/Wishlist";
+//import styles from './../../styles/styles';
 
 const Header = ({ activeHeading }) => {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
   const [dropDown, setDropDown] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+  const [openWishlist, setOpenWishlist] = useState(false);
+  //const [open, setOpen] = useState(false);
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -143,12 +149,17 @@ const Header = ({ activeHeading }) => {
           <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 text-white font-mono text-[12px] leading-tight text-center mr-0"></span>
         </div>
         <div className={`${styles.noramlFlex}`}>
-        <div className="realtive cursor-pointer mr-[15px]">
-          <Link to="/login">
-            <CgProfile size={40} color="rgb(255 255 255 / 100%)" />
-          </Link>
+          <div className="realtive cursor-pointer mr-[15px]">
+            <Link to="/login">
+              <CgProfile size={40} color="rgb(255 255 255 / 100%)" />
+            </Link>
+          </div>
         </div>
-      </div>
+        {/* cart popup */}
+        {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
+
+        {/* wishlist popup */}
+        {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
       </div>
     </div>
   );
