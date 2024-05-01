@@ -2,27 +2,23 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
 import { categoriesData } from "../../static/data";
-import {
-  AiOutlineHeart,
-  AiOutlineSearch,
-  AiOutlineShoppingCart,
-} from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { AiOutlineHeart, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
-import { useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
 
 const Header = ({ activeHeading }) => {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-  const { isSeller } = useSelector((state) => state.seller);
-  const { wishlist } = useSelector((state) => state.wishlist);
-  const { cart } = useSelector((state) => state.cart);
-  const { allProducts } = useSelector((state) => state.products);
+  const { isAuthenticated, user } = useSelector((state) => state.user || {});
+  const { isSeller } = useSelector((state) => state.seller || {});
+  const { wishlist } = useSelector((state) => state.wishlist || {});
+  const { cart } = useSelector((state) => state.cart || {});
+  const { allProducts } = useSelector((state) => state.products || {});
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
@@ -81,7 +77,7 @@ const Header = ({ activeHeading }) => {
                 {searchData &&
                   searchData.map((i, index) => {
                     return (
-                      <Link to={`/product/${i._id}`}>
+                      <Link to={`/product/${i._id}`} key={index}>
                         <div className="w-full flex items-start-py-3">
                           <img
                             src={`${i.images[0]?.url}`}
@@ -276,15 +272,12 @@ const Header = ({ activeHeading }) => {
                 />
                 {searchData && (
                   <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3">
-                    {searchData.map((i) => {
-                      const d = i.name;
-
-                      const Product_name = d.replace(/\s+/g, "-");
+                    {searchData.map((i, index) => {
                       return (
-                        <Link to={`/product/${Product_name}`}>
+                        <Link to={`/product/${i._id}`} key={index}>
                           <div className="flex items-center">
                             <img
-                              src={i.image_Url[0]?.url}
+                              src={i.images[0]?.url}
                               alt=""
                               className="w-[50px] mr-2"
                             />
@@ -314,7 +307,7 @@ const Header = ({ activeHeading }) => {
                   <div>
                     <Link to="/profile">
                       <img
-                        src={`${user.avatar?.url}`}
+                        src={`${user?.avatar?.url}`}
                         alt=""
                         className="w-[60px] h-[60px] rounded-full border-[3px] border-[#0eae88]"
                       />
