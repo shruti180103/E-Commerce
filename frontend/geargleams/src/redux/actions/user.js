@@ -32,34 +32,41 @@ export const loadSeller = () => async (dispatch) => {
 };
 
 // update user information
-export const updateUserInformation = (name, email, phoneNumber, password) => async (dispatch) => {
-  try {
-    // Dispatch an action indicating the request is being made
-    dispatch({
-      type: "UpdateUserRequest",
-    });
+export const updateUserInformation =
+  (name, email, phoneNumber, password) => async (dispatch) => {
+    try {
+      // Dispatch an action indicating the request is being made
+      dispatch({
+        type: "UpdateUserRequest",
+      });
 
-    // Make the API call to update user information
-    const { data } = await axios.put(`${server}/user/update`, { name, email, phoneNumber, password }, { withCredentials: true });
+      // Make the API call to update user information
+      const { data } = await axios.put(
+        `${server}/user/update`,
+        { name, email, phoneNumber, password },
+        { withCredentials: true }
+      );
 
-    // Dispatch an action indicating the update was successful
-    dispatch({
-      type: "UpdateUserSuccess",
-      payload: data.message,
-    });
-  } catch (error) {
-    // Dispatch an action indicating the update failed
-    dispatch({
-      type: "UpdateUserFail",
-      payload: error.response.data.message,
-    });
-  }
-};
+      // Dispatch an action indicating the update was successful
+      dispatch({
+        type: "UpdateUserSuccess",
+        payload: data.message,
+      });
+    } catch (error) {
+      // Dispatch an action indicating the update failed
+      dispatch({
+        type: "UpdateUserFail",
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 // get all users
 export const getAllUsers = () => async (dispatch) => {
   try {
-    const { data } = await axios.get(`${server}/user/all`, { withCredentials: true });
+    const { data } = await axios.get(`${server}/user/all`, {
+      withCredentials: true,
+    });
     dispatch({
       type: "GetAllUsersSuccess",
       payload: data.users,
