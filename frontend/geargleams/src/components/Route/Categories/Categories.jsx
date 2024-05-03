@@ -5,31 +5,8 @@ import styles from "../../../styles/styles";
 
 const Categories = () => {
   const navigate = useNavigate();
-  
-  return (
-    <>
-      <div className={`${styles.section} hidden sm:block`}>
-        <div
-          className={`branding my-12 flex justify-between w-full shadow-sm bg-white p-5 rounded-md`}
-        >
-          {brandingData &&
-            brandingData.map((item, index) => (
-              <div className="flex items-start" key={index}>
-                {/*
-                  Ensure SVG attributes are written in camelCase format
-                */}
-                {React.cloneElement(item.icon, {
-                  strokeLinecap: "round", // Example attribute
-                })}
-                <div className="px-3">
-                  <h3 className="font-bold text-sm md:text-base">{item.title}</h3>
-                  <p className="text-xs md:text-sm">{item.Description}</p>
-                </div>
-              </div>
-            ))}
-        </div>
-      </div>
 
+  return (
       <div
         className={`${styles.section} bg-white p-6 rounded-lg mb-12`}
         id="categories"
@@ -57,7 +34,7 @@ const Categories = () => {
             })}
         </div>
       </div>
-    </>
+    
   );
 };
 
