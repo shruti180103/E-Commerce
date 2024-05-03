@@ -37,3 +37,4 @@ const DropDown = ({ categoriesData, setDropDown }) => {
 };
 
 export default DropDown;
+

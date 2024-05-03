@@ -235,8 +235,7 @@ export const categoriesData = [
     id: 7,
     title: "Mirrors",
     subTitle: "",
-    image_Url:
-      "https://images-cdn.ubuy.ae/6361f7cd5ef92225274cbc63-4-pieces-blind-spot-mirror-for-car-rear.jpg",
+    image_Url: "https://images-cdn.ubuy.ae/6361f7cd5ef92225274cbc63-4-pieces-blind-spot-mirror-for-car-rear.jpg",
   },
   {
     id: 8,
@@ -265,7 +264,7 @@ export const categoriesData = [
 export const productData = [
   {
     id: 1,
-    category: "Tires",
+    category:"Tires",
     name: "Skoda Tires ",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -295,7 +294,7 @@ export const productData = [
   },
   {
     id: 2,
-    category: "Music System",
+    category:"Music System",
     name: "Electric Music System",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -321,11 +320,11 @@ export const productData = [
     rating: 5,
     total_sell: 80,
     stock: 10,
-    category: "Mobile & Tablets",
+    category:"Mobile & Tablets"
   },
   {
     id: 1,
-    category: "Tires",
+    category:"Tires",
     name: "MRF Tyres",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -352,11 +351,11 @@ export const productData = [
     rating: 4,
     total_sell: 75,
     stock: 10,
-    category: "Tires",
+    category:"Tires"
   },
   {
     id: 4,
-    category: "Others",
+    category:"Others",
     name: "Car Accerioes",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -377,7 +376,7 @@ export const productData = [
         url: "https://www.hatchwise.com/wp-content/uploads/2022/05/amazon-logo-1024x683.png",
       },
       ratings: 4.2,
-      category: "Others",
+    category:"Others"
     },
     price: 100,
     discount_price: 79,
@@ -387,7 +386,7 @@ export const productData = [
   },
   {
     id: 5,
-    category: "wheel Bearing",
+    category:"wheel Bearing",
     name: "Metal Bearing",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -414,7 +413,7 @@ export const productData = [
     rating: 5,
     total_sell: 49,
     stock: 10,
-    category: "Wheel Bearing",
+    category:"Wheel Bearing"
   },
   {
     id: 1,
@@ -453,7 +452,7 @@ export const productData = [
     ],
     total_sell: 20,
     stock: 10,
-    category: "Tires",
+    category:"Tires"
   },
   {
     id: 4,
@@ -524,7 +523,7 @@ export const productData = [
   },
   {
     id: 2,
-    category: "Seat Covers",
+    category:"Seat Covers",
     name: "Leather Seat Covers",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -548,14 +547,14 @@ export const productData = [
     },
     discount_price: 1099,
     rating: 5,
-
+  
     total_sell: 20,
-
+  
     stock: 10,
   },
   {
     id: 1,
-    category: "Tyres",
+    category:"Tyres",
     name: " Apollo Tyres",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -597,11 +596,11 @@ export const productData = [
 export const footerProductLinks = [
   {
     name: "About us",
-    link: "/about",
+    link: "/about"
   },
   {
     name: "Careers",
-    link: "/carrers",
+    link: "/carrers"
   },
   {
     name: "Store Locations",
