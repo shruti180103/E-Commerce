@@ -15,7 +15,6 @@ import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
-import { backend_url } from "../../server";
 
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -23,8 +22,8 @@ const Header = ({ activeHeading }) => {
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
   const [dropDown, setDropDown] = useState(false);
-  const { openCart, setOpenCart } = useState(false);
-  const { openWishlist, setOpenWishlist } = useState(false);
+  const [openCart, setOpenCart] = useState(false); // Correct initialization
+  const [openWishlist, setOpenWishlist] = useState(false); // Correct initialization
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -77,7 +76,7 @@ const Header = ({ activeHeading }) => {
                     const d = i.name;
                     const Product_name = d.replace(/\s+/g, "-");
                     return (
-                      <Link to={`/product/${i._id}`}>
+                      <Link to={`/product/${i._id}`} key={index}> {/* Added key */}
                         <div className="w-full flex items-start-py-3">
                           <img
                             src={`${i.images[0]?.url}`}

@@ -191,72 +191,72 @@ export const brandingData = [
 export const categoriesData = [
   {
     id: 1,
-    title: "Tires",
+    title: "Tires ",
     subTitle: "",
     image_Url:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xNIClT_8L-QyxbaxCuvlhE4KbiaO6eZWxGnpcDi1cQ&s",
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Ftires&psig=AOvVaw3Jk_vFojMYybDQ1drlxte6&ust=1714861725706000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLCBhPLD8oUDFQAAAAAdAAAAABAZ",
   },
   {
     id: 2,
     title: "Engines",
     subTitle: "",
     image_Url:
-      "https://5.imimg.com/data5/SELLER/Default/2023/11/360502899/RY/NZ/HD/201405135/original-used-ej20t-engine-1000x1000.jpg",
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dreamstime.com%2Fphotos-images%2Fcar-engine.html&psig=AOvVaw2oWpKKTboWq9ZRBySyRLyr&ust=1714873213907000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMjh0Nfu8oUDFQAAAAAdAAAAABAE",
   },
   {
     id: 3,
-    title: " Car Accesories",
-    subTitle: "",
-    image_Url:
-      "https://5.imimg.com/data5/CH/TU/TN/SELLER-10380492/drink-holder-500x500.jpg",
-  },
-  {
-    id: 4,
     title: "Seat Covers",
     subTitle: "",
     image_Url:
-      "https://5.imimg.com/data5/SELLER/Default/2023/6/321041224/SZ/MF/TF/155788918/1-11--500x500.jpg",
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcarshoppee.in%2Fproduct%2Fcar-custom-seat-cover-sedan%2F&psig=AOvVaw3grEGl9PSGhFJzwO_uN1Qv&ust=1714873266417000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPDPzPDu8oUDFQAAAAAdAAAAABAE",
+  },
+  {
+    id: 4,
+    title: "Mirrors",
+    subTitle: "",
+    image_Url:
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpartsavatar.ca%2Fblog%2Fpaint-body%2Ftypes-of-car-mirrors%2F&psig=AOvVaw1P0r5ZxZr-6TR-Ljn2tpNl&ust=1714873379200000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMjrqqjv8oUDFQAAAAAdAAAAABAE",
   },
   {
     id: 5,
-    title: "Wheel Bearing",
+    title: "Music System",
     subTitle: "",
     image_Url:
-      "https://c8.alamy.com/comp/2BG1YAG/wheel-bearing-isolated-on-white-background-3d-illustration-2BG1YAG.jpg",
+      "https://www.google.com/shopping/product/10456257194632750548?sca_esv=aefa6caa23033a76&sca_upv=1&rlz=1C1RXQR_enIN1018IN1018&sxsrf=ADLYWIK4rFpLjIDl1aHKsacXZwJlQmE3qQ:1714787062489&q=music+system+car+images&prmd=isvnmbtz&ictx=111&biw=1536&bih=695&dpr=1.25&prds=eto:572330705738673801_0,pid:7183729576373490542&sa=X&ved=0ahUKEwjWkYfR7_KFAxWxga8BHSWnDBgQ8gIItwUoAA",
   },
   {
     id: 6,
-    title: "Door Components",
+    title: "Accessories",
     subTitle: "",
     image_Url:
-      "https://www.theengineerspost.com/wp-content/uploads/2022/07/Car-Door-Parts-2.jpg",
+      "https://www.google.com/url?url=https://www.meesho.com/car-int-and-ext-accessories-combo-pack-of-2-car-blue-led-black-ash-tray-and-car-door-protection-door-guard-scratch-proof-black-door-guard-universal-for-all-cars-and-for-chevrolet-beat260/p/2zmdc0%3Fsrsltid%3DAfmBOory_5lP6PnScgb3uTeEzubHJRjaWvmB9s3a7pMlkr67YRdkPt3AFiA&rct=j&q=&esrc=s&opi=95576897&sa=U&ved=0ahUKEwjjt-vw7_KFAxV5c_UHHTtrACAQ1SkIjQcoAA&usg=AOvVaw2zB5RRqZmM5qZDtESiraJO",
   },
   {
     id: 7,
-    title: "Mirrors",
+    title: "Pet Care",
     subTitle: "",
-    image_Url: "https://images-cdn.ubuy.ae/6361f7cd5ef92225274cbc63-4-pieces-blind-spot-mirror-for-car-rear.jpg",
+    image_Url: "https://www.google.com/url?url=https://www.amazon.in/KUTKUT-Booster-Carrier-Breathable-Washable/dp/B09TKLG2VY%3Fsource%3Dps-sl-shoppingads-lpcontext%26ref_%3Dfplfs%26psc%3D1%26smid%3DABGSALUQ1DF7Y&rct=j&q=&esrc=s&opi=95576897&sa=U&ved=0ahUKEwjSnMOJ8PKFAxXfdPUHHT9zAW0Q1SkIyQgoAA&usg=AOvVaw3_DbXLGPKPQxQLd5yu6rxm",
   },
   {
     id: 8,
-    title: "Car Lock",
+    title: "Repair Tools",
     subTitle: "",
     image_Url:
-      "https://m.media-amazon.com/images/I/61o30VzY-jL._AC_UF1000,1000_QL80_.jpg",
+      "https://www.google.com/url?url=https://www.ebay.com/itm/324528244792%3Fvar%3D513582963544&rct=j&q=&esrc=s&opi=95576897&sa=U&ved=0ahUKEwjBho-38PKFAxUCU_UHHZfADBcQ1SkIzggoAA&usg=AOvVaw3hdS3GTnR8QIvMR8CC6sR2",
   },
   {
     id: 9,
-    title: "Music system",
+    title: "Nuts",
     subTitle: "",
     image_Url:
-      "https://5.imimg.com/data5/VH/GK/MY-45251325/music-system-for-cars.jpg",
+      "https://www.google.com/url?url=https://www.amazon.in/Anti-Rust-Wheel-Nut-Compatible-Lug/dp/B0B82XJ23B%3Fsource%3Dps-sl-shoppingads-lpcontext%26ref_%3Dfplfs%26psc%3D1%26smid%3DA1SZCKLJWTNAVF&rct=j&q=&esrc=s&opi=95576897&sa=U&ved=0ahUKEwjBho-38PKFAxUCU_UHHZfADBcQ1SkIjwkoAA&usg=AOvVaw0qSTkFtkeGUerwh3c16fyt",
   },
   {
     id: 10,
     title: "Others",
     subTitle: "",
     image_Url:
-      "https://www.mycarhelpline.com/images/easyblog_articles/570/Car-Accessories.jpg",
+      "https://www.google.com/url?url=https://www.amazon.in/CYRER-Emblem-Monogram-sticker-Plastic/dp/B0BFP27VBS%3Fsource%3Dps-sl-shoppingads-lpcontext%26ref_%3Dfplfs%26psc%3D1%26smid%3DA3FACOT3F0YE8W&rct=j&q=&esrc=s&opi=95576897&sa=U&ved=0ahUKEwi0z5SC8fKFAxV1h68BHb2dDm0Q1SkI5wsoAA&usg=AOvVaw3HamtQ0vU3vrcL96I0HawU",
   },
 ];
 
