@@ -6,16 +6,15 @@ import { productData } from "../static/data";
 
 const BestSellingPage = () => {
   const [data, setData] = useState([]);
- 
 
   useEffect(() => {
-    
-    const d = productData && productData.sort((a,b) => b.sold_out - a.sold_out); 
+    const d =
+      productData && productData.sort((a, b) => b.sold_out - a.sold_out);
     setData(d);
   }, []);
 
   return (
-      <div>
+    <div>
       <Header activeHeading={2} />
       <br />
       <br />
@@ -25,8 +24,7 @@ const BestSellingPage = () => {
         </div>
       </div>
     </div>
-    );
-   };
-  
+  );
+};
 
 export default BestSellingPage;
