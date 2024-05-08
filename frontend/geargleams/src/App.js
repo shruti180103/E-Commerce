@@ -12,7 +12,7 @@ import {
   FAQPage,
   PaymentPage,
   CheckoutPage,
-  ProfilePage,
+
   ProductDetailsPage,
 } from "./Routes.js";
 import ProductCard from "./components/Route/ProductCard/ProductCard.jsx";
@@ -37,13 +37,12 @@ const App = () => {
           element={<ActivationPage />}
         />
         <Route path="/products" element={<ProductPage />} />
-        <Route path="/product/:name" element={<ProductDetailsPage />} />
+        <Route path="/product/:id" element={<ProductDetailsPage />} />
         <Route path="/best-Selling" element={<BestSellingPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
       <ToastContainer
         position="bottom-center"

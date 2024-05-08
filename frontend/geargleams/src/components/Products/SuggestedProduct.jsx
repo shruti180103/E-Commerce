@@ -5,14 +5,13 @@ import styles from "../../styles/styles";
 import ProductCard from "../Route/ProductCard/ProductCard";
 
 const SuggestedProduct = ({ data }) => {
- // const {allProducts} = useSelector((state) => state.products);
- // const [productData, setProductData] = useState();
-  const [products, setProducts] = useState(null);
+  const {allProducts} = useSelector((state) => state.products);
+  const [productData,setProductData] = useState();
 
   useEffect(() => {
     const d =
-    productData && productData.filter((i) => i.category === data.category);
-    setProducts(d);
+    allProducts && allProducts.filter((i) => i.category === data.category);
+    setProductData(d);
   }, []);
 
   return (
@@ -26,7 +25,7 @@ const SuggestedProduct = ({ data }) => {
           </h2>
           <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-12">
              {
-                products && products.map((i,index) => (
+                productData && productData.map((i,index) => (
                     <ProductCard data={i} key={index} />
                 ))
              }
