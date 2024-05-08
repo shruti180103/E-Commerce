@@ -2,6 +2,9 @@ import React from "react";
 import styles from "../../styles/styles";
 import CountDown from "./CountDown";
 
+
+
+
 const EventCard = ({active}) => {
 
   return (
